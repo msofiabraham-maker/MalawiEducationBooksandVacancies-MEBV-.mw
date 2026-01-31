@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEBV - Malawi Education Books & Vacancies</title>
+    <link rel="icon" href="/assets/icons/icon.png" type="image/png">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="/assets/icons/icon.png" alt="MEBV" class="logo-img">
+                <span>MEBV</span>
+            </div>
+            <div class="nav-search">
+                <input type="text" id="searchInput" placeholder="Search books..." class="search-bar">
+                <div id="searchResults" class="search-results hidden"></div>
+            </div>
+            <div class="nav-buttons">
+                <button id="menuBtn" class="nav-btn glass-btn">☰ Menu</button>
+                <button id="donateBtn" class="nav-btn glass-btn">💝 Donate</button>
+                <button id="whatsappBtn" class="nav-btn glass-btn">💬 WhatsApp</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Menu Modal -->
+    <div id="menuModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeMenuModal()">&times;</span>
+            <h2>Menu</h2>
+            <div class="menu-items">
+                <button class="menu-item" onclick="openAbout()">📖 About Us</button>
+                <button class="menu-item" onclick="openContact()">📧 Contact Us</button>
+                <button class="menu-item" onclick="location.reload()">🏠 Home</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Modal -->
+    <div id="aboutModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeAboutModal()">&times;</span>
+            <h2>About MEBV</h2>
+            <div class="about-content">
+                <p>Malawi Education Books and Vacancies (MEBV) is a dedicated platform for providing quality educational resources to students and educators across Malawi.</p>
+                <h3>Our Mission</h3>
+                <p>To democratize access to quality educational materials, making learning resources affordable and accessible to every student in Malawi, regardless of socioeconomic background.</p>
+                <h3>Our Vision</h3>
+                <p>To become the leading educational resource platform in Malawi, empowering learners and educators with comprehensive study materials and career opportunities.</p>
+                <h3>What We Offer</h3>
+                <ul>
+                    <li>📚 Comprehensive study notes for all levels</li>
+                    <li>💾 Multiple format support (PDF, DOCX, PPTX, RTF)</li>
+                    <li>🎯 Affordable pricing at K600 for download, K240 for online reading</li>
+                    <li>🔒 Secure payment and access system</li>
+                    <li>🌍 Supporting quality education across Malawi</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeContactModal()">&times;</span>
+            <h2>Contact Us</h2>
+            <div class="contact-content">
+                <p><strong>Email:</strong> msofiabraham@gmail.com</p>
+                <p><strong>Phone:</strong> +265 993 984 344</p>
+                <p><strong>WhatsApp:</strong> +265 993 984 344</p>
+                <h3>Connect with us:</h3>
+                <div class="social-links">
+                    <a href="https://wa.me/265993984344" target="_blank">WhatsApp Group</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Donations Modal -->
+    <div id="donateModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeDonateModal()">&times;</span>
+            <h2>Support Our Mission</h2>
+            <div class="donate-content">
+                <p class="donate-quote">"Your donation helps us provide affordable education to every student in Malawi"</p>
+                <div class="payment-methods">
+                    <div class="payment-card">
+                        <img src="/assets/payments/national-bank.png" alt="National Bank" class="payment-logo">
+                        <h3>National Bank</h3>
+                        <p><strong>Account:</strong> Abraham Msofi</p>
+                        <p><strong>Number:</strong> 1011288266</p>
+                    </div>
+                    <div class="payment-card">
+                        <img src="/assets/payments/airtel-money.png" alt="Airtel Money" class="payment-logo">
+                        <h3>Airtel Money</h3>
+                        <p><strong>Account:</strong> Abraham Msofi</p>
+                        <p><strong>Number:</strong> +265993984344</p>
+                    </div>
+                    <div class="payment-card">
+                        <img src="/assets/payments/tnm-mpamba.png" alt="TNM Mpamba" class="payment-logo">
+                        <h3>TNM Mpamba</h3>
+                        <p><strong>Account:</strong> Abraham Msofi</p>
+                        <p><strong>Number:</strong> +265897228943</p>
+                    </div>
+                </div>
+                <p class="donation-note">Thank you for supporting quality education in Malawi!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <div class="hero-section">
+            <h1>Malawi Education Books & Vacancies</h1>
+            <p>Access quality educational resources at affordable prices</p>
+        </div>
+
+        <div class="books-grid" id="booksGrid">
+            <!-- Books loaded here by JavaScript -->
+        </div>
+    </main>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal hidden">
+        <div class="modal-content payment-modal">
+            <span class="close-modal" onclick="closePaymentModal()">&times;</span>
+            <h2 id="paymentTitle">Payment Required</h2>
+            <p id="paymentAmount"></p>
+            <div class="payment-methods">
+                <div class="payment-card">
+                    <img src="/assets/payments/national-bank.png" alt="National Bank" class="payment-logo">
+                    <h3>National Bank</h3>
+                    <p><strong>Account:</strong> Abraham Msofi</p>
+                    <p><strong>Number:</strong> 1011288266</p>
+                </div>
+                <div class="payment-card">
+                    <img src="/assets/payments/airtel-money.png" alt="Airtel Money" class="payment-logo">
+                    <h3>Airtel Money</h3>
+                    <p><strong>Account:</strong> Abraham Msofi</p>
+                    <p><strong>Number:</strong> +265993984344</p>
+                </div>
+                <div class="payment-card">
+                    <img src="/assets/payments/tnm-mpamba.png" alt="TNM Mpamba" class="payment-logo">
+                    <h3>TNM Mpamba</h3>
+                    <p><strong>Account:</strong> Abraham Msofi</p>
+                    <p><strong>Number:</strong> +265897228943</p>
+                </div>
+            </div>
+            <button id="confirmPaymentBtn" class="btn btn-primary">Proceed to Verification</button>
+        </div>
+    </div>
+
+    <!-- Verification Modal -->
+    <div id="verificationModal" class="modal hidden">
+        <div class="modal-content verification-modal">
+            <span class="close-modal" onclick="closeVerificationModal()">&times;</span>
+            <h2>Verify Payment</h2>
+            <p>Enter your transaction ID to verify payment:</p>
+            <input type="text" id="transactionId" placeholder="Paste your transaction ID here" class="input-field">
+            <p class="verification-hint">Please Paste whole message</p>
+            <button id="verifyBtn" class="btn btn-primary">Verify & Proceed</button>
+        </div>
+    </div>
+
+    <!-- Access Modal -->
+    <div id="accessModal" class="modal hidden">
+        <div class="modal-content access-modal">
+            <span class="close-modal" onclick="closeAccessModal()">&times;</span>
+            <h2>Access Granted ✓</h2>
+            <p id="accessMessage"></p>
+            <button id="accessBtn" class="btn btn-primary">Proceed</button>
+        </div>
+    </div>
+
+    <!-- Download Modal -->
+    <div id="downloadModal" class="modal hidden">
+        <div class="modal-content download-modal">
+            <span class="close-modal" onclick="closeDownloadModal()">&times;</span>
+            <h2>Download Book</h2>
+            <p id="downloadMessage"></p>
+            <a id="downloadLink" href="#" download class="btn btn-primary">⬇️ Download Now</a>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div id="shareModal" class="modal hidden">
+        <div class="modal-content share-modal">
+            <span class="close-modal" onclick="closeShareModal()">&times;</span>
+            <h2>Share Book</h2>
+            <p>Share link (requires payment to access):</p>
+            <div class="share-container">
+                <input type="text" id="shareLink" readonly class="input-field">
+                <button onclick="copyShareLink()" class="btn btn-secondary">📋 Copy Link</button>
+            </div>
+            <p class="share-note">Anyone who opens this link will need to make payment to access the book.</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 MEBV - Malawi Education Books & Vacancies. All rights reserved.</p>
+    </footer>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

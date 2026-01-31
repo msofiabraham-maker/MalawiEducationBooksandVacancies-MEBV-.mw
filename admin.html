@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEBV Admin Panel</title>
+    <link rel="icon" href="/assets/icons/icon.png" type="image/png">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="admin-body">
+    <!-- Admin Panel -->
+    <div class="admin-container hidden" id="adminPanel">
+        <div class="admin-header">
+            <h1>📊 MEBV Admin Panel</h1>
+            <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+        </div>
+
+        <div class="admin-content">
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="upload">Upload Book</button>
+                <button class="tab-btn" data-tab="ads">Upload Ads</button>
+                <button class="tab-btn" data-tab="manage">Manage Books</button>
+            </div>
+
+            <!-- Upload Book Tab -->
+            <div id="upload" class="tab-content active">
+                <h2>Upload New Book</h2>
+                <form id="bookUploadForm" class="admin-form">
+                    <div class="form-group">
+                        <label for="bookTitle">Book Title:</label>
+                        <input type="text" id="bookTitle" required class="input-field">
+                    </div>
+                    <div class="form-group">
+                        <label for="bookPrice">Price (MWK):</label>
+                        <input type="number" id="bookPrice" value="600" required class="input-field">
+                    </div>
+                    <div class="form-group">
+                        <label for="bookFormat">File Format:</label>
+                        <select id="bookFormat" required class="input-field">
+                            <option value="pdf">PDF</option>
+                            <option value="docx">DOCX</option>
+                            <option value="pptx">PPTX</option>
+                            <option value="rtf">RTF</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookFile">Book File:</label>
+                        <input type="file" id="bookFile" required class="input-field">
+                    </div>
+                    <div class="form-group">
+                        <label for="bookPreview">Preview Image:</label>
+                        <input type="file" id="bookPreview" accept="image/*" class="input-field">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upload Book</button>
+                </form>
+                <div id="uploadStatus" class="status-message"></div>
+            </div>
+
+            <!-- Upload Ads Tab -->
+            <div id="ads" class="tab-content">
+                <h2>Upload Advertisement</h2>
+                <form id="adsUploadForm" class="admin-form">
+                    <div class="form-group">
+                        <label for="adTitle">Ad Title:</label>
+                        <input type="text" id="adTitle" required class="input-field">
+                    </div>
+                    <div class="form-group">
+                        <label for="adFile">Ad File (Image/Video):</label>
+                        <input type="file" id="adFile" accept="image/*,video/*" required class="input-field">
+                    </div>
+                    <div class="form-group">
+                        <label for="adLink">Ad Link:</label>
+                        <input type="url" id="adLink" class="input-field">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upload Ad</button>
+                </form>
+                <div id="adsStatus" class="status-message"></div>
+            </div>
+
+            <!-- Manage Books Tab -->
+            <div id="manage" class="tab-content">
+                <h2>Manage Books</h2>
+                <div id="booksList" class="books-list">
+                    <!-- Books loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Form -->
+    <div class="admin-login-container" id="loginContainer">
+        <div class="login-card">
+            <h1>MEBV Admin Login</h1>
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label for="adminPassword">Password:</label>
+                    <input type="password" id="adminPassword" placeholder="Enter admin password" required class="input-field">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <p id="loginError" class="error-message"></p>
+        </div>
+    </div>
+
+    <script src="/js/admin.js"></script>
+</body>
+</html>
